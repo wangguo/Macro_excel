@@ -1,12 +1,13 @@
 Macro_excel
 ===========
 
-¾­³£Ê¹ÓÃµ½µÄExcelºê£¬ÒÔ¼°ÂÛÌ³°æÖ÷¿¼ºËºê£¬»ùÓÚOffice VBA¡£
+ç»å¸¸ä½¿ç”¨åˆ°çš„Excelå®ï¼Œä»¥åŠè®ºå›ç‰ˆä¸»è€ƒæ ¸å®ï¼ŒåŸºäºOffice VBAã€‚
 
-ÎÄ¼şËµÃ÷ÈçÏÂ£º
+æ–‡ä»¶è¯´æ˜å¦‚ä¸‹ï¼š
 
-* BBS_Assess_common.vba£º³£ÓÃExcelºê
-* BBS_Assess_daban.vba£º´ó°æ°æÖ÷¿¼ºËºê
-* BBS_Assess_xiaoban.vba£ºĞ¡°æ°æÖ÷¿¼ºËºê
-* BBS_Assess_huizong.vba£º°æÖ÷µÃ·Ö»ã×Üºê
+* BBS_Assess_common.vbaï¼šå¸¸ç”¨Excelå®
+* BBS_Assess_daban.vbaï¼šå¤§ç‰ˆç‰ˆä¸»è€ƒæ ¸å®
+* BBS_Assess_xiaoban.vbaï¼šå°ç‰ˆç‰ˆä¸»è€ƒæ ¸å®
+* BBS_Assess_huizong.vbaï¼šç‰ˆä¸»å¾—åˆ†æ±‡æ€»å®
+* BBS_Assess_kaohe.vbaï¼šå¤§ç‰ˆå°ç‰ˆè€ƒæ ¸åˆ†çº§å¾—åˆ†
 
