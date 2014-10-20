@@ -41,6 +41,19 @@ End Sub
 
 
 
+Sub 打开多个链接()
+
+Dim i As Integer
+For i = 41 To 50   '行号
+j = 8              '列号
+Cells(i, j).Hyperlinks(1).Follow NewWindow:=False, AddHistory:=True
+Next
+
+End Sub
+
+
+
+
 Function getname(HyperCell As Variant)
 
 '获取链接名称
