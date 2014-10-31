@@ -1,11 +1,9 @@
-
-
 Sub 删除重复项()
 '
 ' 删除支持者中重复的用户pin
 '
 '
-    ActiveSheet.Range("A:A").RemoveDuplicates Columns:=1, Header:=xlYes
+    ActiveSheet.Range("A:B").RemoveDuplicates Columns:=1, Header:=xlYes
     
         
 End Sub
@@ -37,14 +35,14 @@ Sub 生成随机数并排序()
     
     a = ActiveSheet.UsedRange.Rows.Count
     
-    Range(Cells(2, 3), Cells(a, 3)).Formula = "=Rand()"
+    Range(Cells(2, 4), Cells(a, 4)).Formula = "=Rand()"
     
-    Range(Cells(2, 3), Cells(a, 3)).Select
+    Range(Cells(2, 4), Cells(a, 4)).Select
     ActiveWorkbook.Worksheets("用户数据").Sort.SortFields.Clear
-    ActiveWorkbook.Worksheets("用户数据").Sort.SortFields.Add Key:=Range("C2"), _
+    ActiveWorkbook.Worksheets("用户数据").Sort.SortFields.Add Key:=Range("D2"), _
         SortOn:=xlSortOnValues, Order:=xlAscending, DataOption:=xlSortNormal
     With ActiveWorkbook.Worksheets("用户数据").Sort
-        .SetRange Range(Cells(2, 1), Cells(a, 3))
+        .SetRange Range(Cells(2, 1), Cells(a, 4))
         .Header = xlNo
         .MatchCase = False
         .Orientation = xlTopToBottom
@@ -62,12 +60,12 @@ Dim a As Integer
     
 a = ActiveSheet.UsedRange.Rows.Count
 
-Range("B2").Value = 1
-Range("B3").Value = 2
+Range("C2").Value = 0
+Range("C3").Value = 1
 
 
-Set SourceRange = Range("B2:B3")
-Set fillRange = Range(Cells(2, 2), Cells(a, 2))
+Set SourceRange = Range("C2:C3")
+Set fillRange = Range(Cells(2, 3), Cells(a, 3))
 SourceRange.AutoFill Destination:=fillRange
     
 
@@ -120,7 +118,7 @@ Dim jg
 Dim num
 
 
-Range("B4").Value = "=(B1 - F1) * D1 - Quotient((B1 - F1) * D1, L1) * L1"
+Range("B4").Value = "=(B1 - D1) * F1 - Quotient((B1 - D1) * F1, L1) * L1"
 
 first = Range("B4").Value
 num = Range("J1").Value
@@ -161,10 +159,53 @@ End Sub
 
 
 
+
 Sub 开始抽奖()
+
 
 奖项
 中奖号
 中奖用户
 
+
+End Sub
+
+
+
+Sub 清空用户数据()
+'
+' 清空所有用户数据
+
+
+Dim a
+
+a = ActiveSheet.UsedRange.Rows.Count
+
+Range(Cells(2, 1), Cells(a + 1, 4)).Select
+
+Selection.ClearContents
+
+Range("A2").Select
+    
+End Sub
+
+
+
+
+Sub 清空抽奖数据()
+
+'
+' 清空所有抽奖数据
+
+
+Dim b
+
+b = Range("J1").Value
+
+Range(Cells(4, 1), Cells(b + 7, 3)).Select
+
+Selection.ClearContents
+
+Range("A4").Select
+    
 End Sub
