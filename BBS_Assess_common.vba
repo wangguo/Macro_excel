@@ -148,4 +148,14 @@ End Sub
 
 
 
+Sub 打开多个链接()
+
+Dim i As Integer
+For i = 2 To 10   '行号
+j = 5              '列号
+Cells(i, j).Hyperlinks(1).Follow NewWindow:=False, AddHistory:=True
+Next
+
+End Sub
+
 
