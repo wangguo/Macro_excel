@@ -148,14 +148,36 @@ End Sub
 
 
 
-Sub 打开多个链接()
+Sub 生成彩票数()
 
-Dim i As Integer
-For i = 2 To 10   '行号
-j = 5              '列号
-Cells(i, j).Hyperlinks(1).Follow NewWindow:=False, AddHistory:=True
+
+
+    n = 1
+    fanwei = 5
+        
+    For a = 1 To fanwei
+        For b = 1 To fanwei
+            For c = 1 To fanwei
+                For d = 1 To fanwei
+                  For e = 1 To fanwei
+                     If a <> b And a <> c And a <> d And a <> e And b <> c And b <> d And b <> e And c <> d And c <> e And d <> e Then
+                             
+            
+                Cells(n, 1) = a
+                Cells(n, 2) = b
+                Cells(n, 3) = c
+                Cells(n, 4) = d
+                Cells(n, 5) = d
+                n = n + 1
+                                
+                    End If
+                Next
+            Next
+        Next
+    Next
 Next
 
 End Sub
+
 
 
