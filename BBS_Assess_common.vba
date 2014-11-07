@@ -150,7 +150,7 @@ End Sub
 
 Sub 生成彩票数()
 
-
+'取5个号码
 
     n = 1
     fanwei = 5
@@ -179,5 +179,48 @@ Next
 
 End Sub
 
+Sub 生成彩票数2()
 
+'取4个号码
+
+    n = 1
+    fanwei = 33
+        
+    For a = 1 To fanwei
+        For b = 1 To fanwei
+            For c = 1 To fanwei
+                For d = 1 To fanwei
+                 
+      If a <> b And a <> c And a <> d And b <> c And b <> d And c <> d Then
+                             
+            
+                Cells(n, 1) = a
+                Cells(n, 2) = b
+                Cells(n, 3) = c
+                Cells(n, 4) = d
+            
+                n = n + 1
+                                
+                End If
+            Next
+        Next
+    Next
+Next
+
+
+End Sub
+
+
+Sub 生成连续数()
+
+ n = 2
+        
+ For a = 1 To 10000
+                    
+    Cells(n, 1) = a
+    n = n + 1
+    
+  Next
+
+End Sub
 
