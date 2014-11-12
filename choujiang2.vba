@@ -239,3 +239,40 @@ Selection.ClearContents
 Range("A4").Select
     
 End Sub
+
+
+
+
+
+
+
+Sub 订单号展示()
+
+
+Dim a, b
+
+a = ActiveSheet.UsedRange.Rows.Count
+
+b = Int((a - 1) / 3) + 1
+
+
+Range("C1").Value = "订单号"
+Range("D1").Value = "抽奖号"
+Range("E1").Value = "订单号"
+Range("F1").Value = "抽奖号"
+
+
+
+Range(Cells(b + 1, 1), Cells(b * 2 - 1, 2)).Select
+Selection.Cut
+Range("C2").Select
+ActiveSheet.Paste
+
+
+Range(Cells(b * 2, 1), Cells(a, 2)).Select
+Selection.Cut
+Range("E2").Select
+ActiveSheet.Paste
+
+
+End Sub
