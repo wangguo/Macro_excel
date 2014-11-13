@@ -244,10 +244,24 @@ End Sub
 
 
 
-
-
 Sub 订单号展示()
 
+
+
+    Sheets("订单号展示").Select
+    Cells.Select
+    Selection.ClearContents
+
+
+    Sheets("用户数据").Select
+    Columns("B:C").Select
+    Selection.Copy
+    
+     
+    Sheets("订单号展示").Select
+    Range("A1").Select
+    ActiveSheet.Paste
+ 
 
 Dim a, b
 
@@ -275,4 +289,35 @@ Range("E2").Select
 ActiveSheet.Paste
 
 
+
 End Sub
+
+
+
+
+Sub 订单号数字格式()
+'
+' 订单号从文本格式改为数字格式（去掉 '）
+'
+
+'
+    Columns("B:B").Select
+    Selection.Replace What:="'", Replacement:="", LookAt:=xlPart, _
+        SearchOrder:=xlByRows, MatchCase:=False, SearchFormat:=False, _
+        ReplaceFormat:=False
+    Selection.NumberFormatLocal = "0_);[红色](0)"
+   
+    With Selection
+        .HorizontalAlignment = xlCenter
+        .VerticalAlignment = xlCenter
+        .WrapText = False
+        .Orientation = 0
+        .AddIndent = False
+        .IndentLevel = 0
+        .ShrinkToFit = False
+        .ReadingOrder = xlContext
+        .MergeCells = False
+    End With
+End Sub
+
+
