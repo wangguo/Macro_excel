@@ -224,3 +224,32 @@ Sub 生成连续数()
 
 End Sub
 
+
+
+Sub 数据展示()
+
+'将有规律的一列数据分为多列显示
+
+Dim i, j, k As Integer
+j = 1
+k = 1
+For i = 1 To 270
+    
+    Sheets("总数").Select
+    Cells(i, 1).Select
+    Selection.Copy
+    
+    Sheets("分类").Select
+    Cells(j, k).Select
+    ActiveSheet.Paste
+    ActiveCell.Offset(1, 0).Select
+
+    i = i + 8
+    j = j + 1
+     
+Next
+
+ Sheets("总数").Select
+ Range("A1").Select
+
+End Sub
