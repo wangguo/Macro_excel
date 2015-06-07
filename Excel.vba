@@ -112,3 +112,31 @@ Sub 删除偶数行值()
 End Sub
     
  
+Sub 数据整理()
+
+'将固定行数的1列值转置
+
+Dim i, j, k As Integer
+
+a = 1
+j = 1
+k = a
+
+For i = a To 300
+       
+    Sheets("总数").Select
+    Cells(i, 1).Select
+    Selection.Copy
+    Sheets("整理").Select
+    Cells(j, k).Select
+    ActiveSheet.Paste
+    ActiveCell.Offset(1, 0).Select
+      
+    i = i + 4
+    j = j + 1
+    
+    Next
+ Sheets("总数").Select
+ Range("A1").Select
+
+End Sub
