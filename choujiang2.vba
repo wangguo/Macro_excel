@@ -1,3 +1,4 @@
+Attribute VB_Name = "模块1"
 
 
 Sub 删除重复项()
@@ -62,8 +63,8 @@ Dim a As Integer
     
 a = ActiveSheet.UsedRange.Rows.Count
 
-Range("C2").Value = 1
-Range("C3").Value = 2
+Range("C2").Value = 0
+Range("C3").Value = 1
 
 
 Set SourceRange = Range("C2:C3")
@@ -96,7 +97,7 @@ Sub 奖项()
 Dim x As Integer
 Dim num
 
-num = Range("J1").Value
+num = Range("L1").Value
 
 Range("A4").Select
 
@@ -120,17 +121,18 @@ Dim jg
 Dim num
 
 
-Range("B4").Value = "=INT((B1 - D1) * F1 / 512 * L1)"
+Range("B4").Value = "=MOD(H1,N1)"
 
 first = Range("B4").Value
-num = Range("J1").Value
-jg = Range("L1").Value
+num = Range("L1").Value
+jg = Range("N1").Value
+xs = Range("P1").Value
 
 Range("B5").Select
 
 For i = 1 To (num - 1)
 
-Selection.Value = first + (jg * i)
+Selection.Value = Int(first + (xs * i))
 
 ActiveCell.Offset(1, 0).Select
 
@@ -145,7 +147,7 @@ Sub 中奖用户()
 ' 根据中奖号挑选出用户pin
 
 Dim num
-num = Range("J1").Value
+num = Range("L1").Value
 
 Range("C4").Select
    
@@ -170,7 +172,7 @@ Sub 中奖订单()
 ' 根据中奖号挑选出用户pin
 
 Dim num
-num = Range("J1").Value
+num = Range("L1").Value
 
 Range("D4").Select
    
@@ -189,6 +191,30 @@ End If
 End Sub
 
 
+Sub 中奖用户pin隐藏()
+
+
+' 将用户pin从第3位开始的3个字符用*代替
+
+Dim num
+num = Range("L1").Value
+
+Range("E4").Select
+   
+Selection.Value = "=REPLACE(C4,3,3,""***"")"
+
+If num > 1 Then
+Set SourceRange = Range("E4")
+Set fillRange = Range(Cells(4, 5), Cells(num + 3, 5))
+SourceRange.AutoFill Destination:=fillRange
+ 
+End If
+ 
+End Sub
+
+
+
+
 
 Sub 开始抽奖()
 
@@ -197,6 +223,7 @@ Sub 开始抽奖()
 中奖号
 中奖用户
 中奖订单
+中奖用户pin隐藏
 
 End Sub
 
@@ -232,7 +259,7 @@ Dim b
 
 b = Range("J1").Value
 
-Range(Cells(4, 1), Cells(b + 7, 4)).Select
+Range(Cells(4, 1), Cells(b + 7, 5)).Select
 
 Selection.ClearContents
 
@@ -241,16 +268,13 @@ Range("A4").Select
 End Sub
 
 
-
-
-
 Sub 订单号展示()
 
 
 
     Sheets("订单号展示").Select
     Cells.Select
-    Selection.ClearContents
+    Selection.EntireRow.Delete
 
 
     Sheets("用户数据").Select
@@ -290,6 +314,15 @@ ActiveSheet.Paste
 
 
 
+    Range("A:A,C:C,E:E").Select
+    Selection.ColumnWidth = 15
+    Range("B:B,D:D,F:F").Select
+    Selection.ColumnWidth = 8
+
+
+
+
+
 End Sub
 
 
@@ -321,3 +354,63 @@ Sub 订单号数字格式()
 End Sub
 
 
+
+
+
+Sub 中奖号展示()
+
+
+    Dim r As Integer
+    r = Sheets("抽奖").Range("L1").Value
+
+    Sheets("中奖号展示").Select
+    Cells.Select
+    Selection.EntireRow.Delete
+    Range("A1").Value = "中奖号"
+    Range("B1").Value = "订单号"
+    Range("C1").Value = "京东账号"
+
+
+    Sheets("抽奖").Select
+    Range(Cells(4, 2), Cells(4 + r - 1, 2)).Select
+    Selection.Copy
+    Sheets("中奖号展示").Select
+    Range("A2").Select
+    Selection.PasteSpecial Paste:=xlPasteAllUsingSourceTheme, Operation:=xlNone _
+        , SkipBlanks:=False, Transpose:=False
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+    
+     
+    Sheets("抽奖").Select
+    Range(Cells(4, 4), Cells(4 + r - 1, 4)).Select
+    Selection.Copy
+    Sheets("中奖号展示").Select
+    Range("B2").Select
+    Selection.PasteSpecial Paste:=xlPasteAllUsingSourceTheme, Operation:=xlNone _
+        , SkipBlanks:=False, Transpose:=False
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+     
+    Sheets("抽奖").Select
+    Range(Cells(4, 5), Cells(4 + r - 1, 5)).Select
+    Selection.Copy
+    Sheets("中奖号展示").Select
+    Range("C2").Select
+    Selection.PasteSpecial Paste:=xlPasteAllUsingSourceTheme, Operation:=xlNone _
+        , SkipBlanks:=False, Transpose:=False
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+    
+  
+  
+    Sheets("中奖号展示").Select
+    Range("A:A").Select
+    Selection.ColumnWidth = 10
+    Range("B:B").Select
+    Selection.ColumnWidth = 20
+    Range("C:C").Select
+    Selection.ColumnWidth = 20
+
+
+End Sub
