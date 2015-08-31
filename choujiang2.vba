@@ -1,5 +1,3 @@
-Attribute VB_Name = "模块1"
-
 
 Sub 删除重复项()
 '
