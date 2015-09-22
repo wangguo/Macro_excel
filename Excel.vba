@@ -140,3 +140,20 @@ For i = a To 300
  Range("A1").Select
 
 End Sub
+
+
+
+Sub 批量打开链接()
+Dim i As Integer
+Dim j As Integer
+Dim l As Integer
+Dim h As Integer
+
+l = InputBox("请输入链接所在列号", Title, 10)
+i = InputBox("请输入起始行号", Title, 1)
+j = InputBox("请输入终止行号", Title, 10)
+
+For h = 1 To 3
+Cells(h, 4).Hyperlinks(1).Follow NewWindow:=False, AddHistory:=True
+Next
+End Sub
