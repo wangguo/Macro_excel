@@ -157,3 +157,35 @@ For h = 1 To 3
 Cells(h, 4).Hyperlinks(1).Follow NewWindow:=False, AddHistory:=True
 Next
 End Sub
+
+
+
+
+
+Sub 挑选楼层()
+
+
+
+Dim i
+
+For i = 1 To 200
+
+Sheets("Sheet2").Select
+If Cells(i, 1).Value > 0 Then
+
+Range(Cells(i, 1), Cells(i, 2)).Select
+
+Selection.Copy
+  
+Sheets("Sheet3").Select
+ 
+ActiveSheet.Paste
+
+ActiveCell.Offset(1, 0).Select
+
+End If
+
+Next i
+
+End Sub
+
