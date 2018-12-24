@@ -8,15 +8,16 @@ Sub 按照某个规则分表()
     a = Cells(i, 1).Value
     '根据规则进行数据筛选复制
     Sheets("工作表2").Select
-    ActiveSheet.Range("$A$1:$J$1389").AutoFilter Field:=3, Criteria1:=a
-    Range("A1:J1389").Select
+    ActiveSheet.Range("$A$1:$J$1500").AutoFilter Field:=3, Criteria1:=a
+    Range("A1:J1500").Select
     Selection.Copy
     '将复制内容保存到新的工作簿并命名
     Workbooks.Add
     ActiveSheet.Paste
-    ChDir "这里是文件夹路径"
-    ActiveWorkbook.SaveAs Filename:=a & "_文件名后缀.xlsx" _
+    ActiveWorkbook.SaveAs Filename:= _
+        "文件夹路径" & a & "_文件名后缀.xlsx" _
         , FileFormat:=xlOpenXMLWorkbook, CreateBackup:=False
+    ActiveWorkbook.Close
 
     Workbooks("工作簿.xlsm").Activate
     Sheets("工作表1").Select
